@@ -20,45 +20,46 @@ const PremiumStack = createStackNavigator();
 
 export default function BottomTabScreen() {
     return (
-        <NavigationContainer>
-            <BottomTab.Navigator initialRouteName="Home" >
-                <BottomTab.Screen name="Home" component={HomeNavigator}
-                    options={{tabBarLabel:"Home",tabBarColor: '#424242',tabBarIcon:({color})=>(<Entypo name="home" size={25} />)}}/>
-                <BottomTab.Screen name="Search" component={SearchNavigator}
-                    options={{tabBarLabel:"Search",tabBarColor: '#424242', tabBarIcon:({color})=>(<EvilIcons name="search" size={25} />)}}/>
-                <BottomTab.Screen name="Library" component={LibraryNavigator}
-                    options={{tabBarLabel:"Library",tabBarColor: '#424242',tabBarIcon:({color})=>(<MaterialCommunityIcons name="library-shelves" size={25} />)}}/>
-                <BottomTab.Screen name="Premium" component={PremNavigator}
-                    options={{tabBarLabel:"Premium",tabBarColor: '#424242', tabBarIcon:({color})=>(<FontAwesome5 name="spotify" size={25} />)}}/>            
-            </BottomTab.Navigator>
-        </NavigationContainer>
+            
+            <NavigationContainer>
+                <BottomTab.Navigator initialRouteName="Home" >
+                    <BottomTab.Screen name="Home" component={HomeNavigator}
+                        options={{tabBarColor: '#424242' ,tabBarIcon:({color})=>(<Entypo name="home" size={22} color="white" />)}}/>
+                    <BottomTab.Screen name="Search" component={SearchNavigator}
+                        options={{tabBarColor: '#424242', tabBarIcon:({color})=>(<EvilIcons name="search" size={22} color="white" />)}}/>
+                    <BottomTab.Screen name="Library" component={LibraryNavigator}
+                        options={{tabBarColor: '#424242',tabBarIcon:({color})=>(<MaterialCommunityIcons name="book-music" size={22} color="white" />)}}/>
+                    <BottomTab.Screen name="Premium" component={PremNavigator}
+                        options={{tabBarColor: '#424242', tabBarIcon:({color})=>(<FontAwesome5 name="spotify" size={22} color="white" />)}}/>            
+                </BottomTab.Navigator>
+            </NavigationContainer>
     );
 }
 
 function HomeNavigator({navigation}) {
     return(
-        <HomeStack.Navigator>
+        <HomeStack.Navigator headerMode="none">
             <HomeStack.Screen name="Home" component={HomeScreen} />
         </HomeStack.Navigator>
     );
 }
 function LibraryNavigator({navigation}) {
     return(
-        <LibraryStack.Navigator>
+        <LibraryStack.Navigator headerMode="none">
             <LibraryStack.Screen name="Library" component={LibraryScreen} />
         </LibraryStack.Navigator>
     );
 }
 function SearchNavigator({navigation}) {
     return(
-        <SearchStack.Navigator>
+        <SearchStack.Navigator headerMode="none">
             <SearchStack.Screen name="Search" component={SearchScreen}/>
         </SearchStack.Navigator>
     );
 }
 function PremNavigator({navigation}) {
     return(
-        <PremiumStack.Navigator>
+        <PremiumStack.Navigator headerMode="none">
             <PremiumStack.Screen name="Premium" component={PremScreen}/>
         </PremiumStack.Navigator>
     );
