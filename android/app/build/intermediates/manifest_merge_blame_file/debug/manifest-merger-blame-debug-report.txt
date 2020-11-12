@@ -17,52 +17,86 @@
 13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 13-->[com.facebook.flipper:flipper:0.54.0] C:\Users\adity\.gradle\caches\transforms-2\files-2.1\1c7787ec82631e0394972c76bdabe608\flipper-0.54.0\AndroidManifest.xml:16:5-76
 13-->[com.facebook.flipper:flipper:0.54.0] C:\Users\adity\.gradle\caches\transforms-2\files-2.1\1c7787ec82631e0394972c76bdabe608\flipper-0.54.0\AndroidManifest.xml:16:22-73
-14
-15    <application
-15-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:6:5-25:19
-16        android:name="com.spoticli.MainApplication"
-16-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:7:7-38
-17        android:allowBackup="false"
-17-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:11:7-34
-18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-18-->[androidx.core:core:1.1.0] C:\Users\adity\.gradle\caches\transforms-2\files-2.1\639e914bfc1efa21e36199d3ff2c5eef\core-1.1.0\AndroidManifest.xml:24:18-86
-19        android:debuggable="true"
-20        android:icon="@mipmap/ic_launcher"
-20-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:9:7-41
-21        android:label="@string/app_name"
-21-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:8:7-39
-22        android:roundIcon="@mipmap/ic_launcher_round"
-22-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:10:7-52
-23        android:theme="@style/AppTheme"
-23-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:12:7-38
-24        android:usesCleartextTraffic="true" >
-24-->C:\Users\adity\Projects\spoticli\android\app\src\debug\AndroidManifest.xml:7:18-53
-25        <activity
-25-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:13:7-23:18
-26            android:name="com.spoticli.MainActivity"
-26-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:14:9-37
-27            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-27-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:16:9-86
-28            android:label="@string/app_name"
-28-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:15:9-41
-29            android:launchMode="singleTask"
-29-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:17:9-40
-30            android:windowSoftInputMode="adjustResize" >
-30-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:18:9-51
-31            <intent-filter>
-31-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:19:9-22:25
-32                <action android:name="android.intent.action.MAIN" />
-32-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:20:13-65
-32-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:20:21-62
-33
-34                <category android:name="android.intent.category.LAUNCHER" />
-34-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:21:13-73
-34-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:21:23-70
-35            </intent-filter>
-36        </activity>
-37        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-37-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:24:7-84
-37-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:24:17-81
-38    </application>
-39
-40</manifest>
+14    <uses-permission android:name="android.permission.WAKE_LOCK" />
+14-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-68
+14-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:22-65
+15    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+15-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-77
+15-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:22-74
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->[com.google.android.exoplayer:exoplayer-core:2.10.1] C:\Users\adity\.gradle\caches\transforms-2\files-2.1\f2e6550c2a9c5848c1f5bf6c042824f4\jetified-exoplayer-core-2.10.1\AndroidManifest.xml:24:5-79
+16-->[com.google.android.exoplayer:exoplayer-core:2.10.1] C:\Users\adity\.gradle\caches\transforms-2\files-2.1\f2e6550c2a9c5848c1f5bf6c042824f4\jetified-exoplayer-core-2.10.1\AndroidManifest.xml:24:22-76
+17
+18    <application
+18-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:6:5-25:19
+19        android:name="com.spoticli.MainApplication"
+19-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:7:7-38
+20        android:allowBackup="false"
+20-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:11:7-34
+21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+21-->[androidx.core:core:1.2.0-beta01] C:\Users\adity\.gradle\caches\transforms-2\files-2.1\0dfbfccd881ef79419407cc1a91e9d97\core-1.2.0-beta01\AndroidManifest.xml:24:18-86
+22        android:debuggable="true"
+23        android:icon="@mipmap/ic_launcher"
+23-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:9:7-41
+24        android:label="@string/app_name"
+24-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:8:7-39
+25        android:roundIcon="@mipmap/ic_launcher_round"
+25-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:10:7-52
+26        android:theme="@style/AppTheme"
+26-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:12:7-38
+27        android:usesCleartextTraffic="true" >
+27-->C:\Users\adity\Projects\spoticli\android\app\src\debug\AndroidManifest.xml:7:18-53
+28        <activity
+28-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:13:7-23:18
+29            android:name="com.spoticli.MainActivity"
+29-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:14:9-37
+30            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+30-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:16:9-86
+31            android:label="@string/app_name"
+31-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:15:9-41
+32            android:launchMode="singleTask"
+32-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:17:9-40
+33            android:windowSoftInputMode="adjustResize" >
+33-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:18:9-51
+34            <intent-filter>
+34-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:19:9-22:25
+35                <action android:name="android.intent.action.MAIN" />
+35-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:20:13-65
+35-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:20:21-62
+36
+37                <category android:name="android.intent.category.LAUNCHER" />
+37-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:21:13-73
+37-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:21:23-70
+38            </intent-filter>
+39        </activity>
+40        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" /> <!-- The main service, handles playback, playlists and media buttons -->
+40-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:24:7-84
+40-->C:\Users\adity\Projects\spoticli\android\app\src\main\AndroidManifest.xml:24:17-81
+41        <service
+41-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-24:19
+42            android:name="com.guichaguri.trackplayer.service.MusicService"
+42-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-75
+43            android:enabled="true"
+43-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-35
+44            android:exported="true" >
+44-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:13-36
+45            <intent-filter>
+45-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:13-23:29
+46                <action android:name="android.intent.action.MEDIA_BUTTON" />
+46-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:17-77
+46-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:25-74
+47            </intent-filter>
+48        </service> <!-- A receiver that will receive media buttons. Required on pre-lollipop devices -->
+49        <receiver android:name="androidx.media.session.MediaButtonReceiver" >
+49-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:9-31:20
+49-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:19-76
+50            <intent-filter>
+50-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:13-23:29
+51                <action android:name="android.intent.action.MEDIA_BUTTON" />
+51-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:17-77
+51-->[:react-native-track-player] C:\Users\adity\Projects\spoticli\node_modules\react-native-track-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:25-74
+52            </intent-filter>
+53        </receiver>
+54    </application>
+55
+56</manifest>

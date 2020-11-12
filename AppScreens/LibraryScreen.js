@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, Dimensions, SafeAreaView, StatusBar, Text, Image } from 'react-native';
 import { RecyclerListView, DataProvider, LayoutProvider } from 'recyclerlistview';
-
+import Entypo from 'react-native-vector-icons/Entypo';
 const { width, height } = Dimensions.get('screen');
 import songs from '../components/data';
+let tot = songs.length;
 export default class LibraryScreen extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +19,7 @@ export default class LibraryScreen extends Component {
             switch (type) {
               case 'NORMAL':
                 dim.width = width;
-                dim.height = 100;
+                dim.height = 80;
                 break;
               default:
                 dim.width = 0;
@@ -32,9 +33,13 @@ export default class LibraryScreen extends Component {
             switch (type) {
                 case 'NORMAL':
                   return (
-                        <View style={{marginBottom:20,marginTop:20, flexDirection:"row"}}>
+                        <View style={{marginBottom:7.5, marginTop:7.5, flexDirection:"row"}}>
                             <Image source = {data.item.artwork} style={styles.image}/>
-                            <Text style={{color:"white", fontSize: 20, marginHorizontal: 10, marginVertical: 10}}>{data.item.title}</Text>
+                            <View style={{flexDirection:"column", flex:5}}>
+                                <Text style={{color:"white", fontSize: 20, marginHorizontal: 10, marginVertical: 1}}>{data.item.title}</Text>
+                                <Text style={{color:"white", fontSize: 15, marginHorizontal: 10}}>{data.item.artist}</Text>
+                            </View>
+                            <View style={styles.icnbox}><Entypo name="dots-three-horizontal" color="white" size={25} /></View> 
                         </View>
                 )
               }
@@ -50,7 +55,8 @@ export default class LibraryScreen extends Component {
          return (
             <SafeAreaView style={styles.container}>
                 <StatusBar barStyle="light-content" backgroundColor="black"/>
-                <Text style={{color:"white", fontSize: 30, marginBottom: 20, textAlign:"center"}}>Library</Text>
+                <Text style={{color:"white", fontSize: 30, marginBottom: 5, textAlign:"center"}}>Library</Text>
+                <Text style={{color:"white", fontSize: 15, marginBottom: 20, textAlign:"center"}}>{tot} Songs</Text>
                 <RecyclerListView rowRenderer={this.rowRenderer} dataProvider={this.state.dataProvider} layoutProvider={this.layoutProvider} onScroll={(e)=>{this.onScroll(e)}} />
             </SafeAreaView>
         );
@@ -66,7 +72,15 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         marginBottom: 5,
-        marginLeft: 10
+        marginLeft: 10,
+        flex:1
 
+    },
+    icnbox: {
+        alignItems:"center",
+        justifyContent:"space-between",
+        flexDirection:"row",
+        flex:1,
+        
     }
 });
