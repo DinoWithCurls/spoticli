@@ -3,15 +3,18 @@ import { View, StyleSheet, Dimensions, SafeAreaView, StatusBar, Text, Image } fr
 import { RecyclerListView, DataProvider, LayoutProvider } from 'recyclerlistview';
 import Entypo from 'react-native-vector-icons/Entypo';
 const { width, height } = Dimensions.get('screen');
-import songs from '../components/data';
-let tot = songs.length;
+let db = new Array();
+fetch('https://spotisongsapi.herokuapp.com/songs').then(function(u){return u.json();}).then(function(json){db = json;})
+
+let tot = db.length;
+
 export default class LibraryScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
             currentVisibleIndex:0,
             scrollPosition:0,
-            dataProvider :new DataProvider((r1) => r1 ===r1).cloneWithRows(songs)
+            dataProvider :new DataProvider((r1) => r1 ===r1).cloneWithRows(db)
         };
         this.layoutProvider = new LayoutProvider(
           (i) => { return this.state.dataProvider.getDataForIndex(i).type; },
@@ -34,7 +37,7 @@ export default class LibraryScreen extends Component {
                 case 'NORMAL':
                   return (
                         <View style={{marginBottom:7.5, marginTop:7.5, flexDirection:"row"}}>
-                            <Image source = {data.item.artwork} style={styles.image}/>
+                            <Image source = {{ uri: data.item.artwork }} style={styles.image}/>
                             <View style={{flexDirection:"column", flex:5}}>
                                 <Text style={{color:"white", fontSize: 20, marginHorizontal: 10, marginVertical: 1}}>{data.item.title}</Text>
                                 <Text style={{color:"white", fontSize: 15, marginHorizontal: 10}}>{data.item.artist}</Text>
