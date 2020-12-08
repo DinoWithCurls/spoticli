@@ -37,7 +37,7 @@ export default class LibraryScreen extends Component {
                 case 'NORMAL':
                   return (
                         <View style={{marginBottom:7.5, marginTop:7.5, flexDirection:"row"}}>
-                            <Image source = {{ uri: data.item.artwork }} style={styles.image}/>
+                            <Image source = {{uri: data.item.artwork}} style={styles.image}/>
                             <View style={{flexDirection:"column", flex:5}}>
                                 <Text style={{color:"white", fontSize: 20, marginHorizontal: 10, marginVertical: 1}}>{data.item.title}</Text>
                                 <Text style={{color:"white", fontSize: 15, marginHorizontal: 10}}>{data.item.artist}</Text>

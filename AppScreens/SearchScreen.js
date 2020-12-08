@@ -1,90 +1,126 @@
 import React from 'react';
-import { Text, View, StatusBar, TextInput, StyleSheet, SafeAreaView, FlatList } from 'react-native';
-import Entypo from 'react-native-vector-icons/Entypo';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+} from 'react-native';
 
-const SearchScreen = () => {
-    const [code, setCode] = React.useState('');
-    const [filteredData, setFilteredData] = React.useState([]);
-    const [masterData, setMasterData] = React.useState([]);
-    React.useEffect(()=> {
-        fetch('https://spotisongsapi.herokuapp.com/songs').then((response)=>response.json())
-            .then((responseJson)=> {
-                setFilteredData(responseJson);
-                setMasterData(responseJson);
-            }).catch((error)=> {
-                console.error(error);
-            })
-    }, []);
-    
-    const _finder = (text) => {
-        if(text) {
-            const newData = masterData.filter(function(item) {
-                const itemData = item.title ? item.title.toUpperCase() : ''.toUpperCase();
-                const textData = text.toUpperCase();
-                return itemData.indexOf(textData) > -1; 
-            });
-            setFilteredData(newData);
-            setCode(text);
-        } else {
-            setFilteredData(masterData);
-            setCode(text);
-        }
-    }
-    const _viewer = ({item}) => {
-        return(
-        <View style={{flexDirection:"column", flex:5, marginTop: 7, marginBottom: 7}}>
-            <Text style={{color:"white", fontSize: 20, marginHorizontal: 10, marginVertical: 1}}>{item.item.title}</Text>
-            <Text style={{color:"white", fontSize: 15, marginHorizontal: 10}}>{item.item.artist}</Text>
-        </View>   
-        );
+import Search from '../components/Components/search';
+import Listing from '../components/Components/list';
+import token from '../components/Assets/api/token';
+import search from '../components/Assets/api/search';
+
+const PAGE = 20;
+class SearchScreen extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      songs: [],
+      offset: 0,
+      query: 'Shpongle',
+      isFetching: false,
+      isEmpty: false,
+      token: null,
+      isTokenFetching: false,
     };
-    return(
-        <SafeAreaView style={{flex: 1}}>    
-            <View style={{backgroundColor:"black", flex: 1, flexDirection: "column"}}>
-                <StatusBar barStyle="light-content" backgroundColor="black"/>
-                <Text style={{color:"white", fontSize: 30, marginBottom: 20, marginLeft: 5}}>Search</Text>
-                <View style={styles.searchbar}>
-                    <View style={styles.icnbox}><Entypo name="magnifying-glass" color="white" size={25} /></View>
-                    <TextInput style={styles.txtinput} placeholder="Enter Song/Artist Name" placeholderTextColor="white" onChangeText={(code) => _finder(code)}/>
-                </View>
-                {console.log(filteredData)}
-                <FlatList 
-                    data={filteredData}
-                    keyExtractor={(index) => index.toString()}
-                    renderItem={(filteredData) => _viewer(filteredData)}
-                />
-            </View>
-        </SafeAreaView>        
+  }
+
+  async loadNextPage() {
+    const { songs, offset, query, token, isFetching, isEmpty } = this.state;
+
+    if (isFetching || isEmpty) {
+      return;
+    }
+
+    this.setState({ isFetching: true });
+
+    const newSongs = await search({
+      offset: offset,
+      limit: PAGE,
+      q: query,
+      token,
+    });
+
+    if (newSongs.length === 0) {
+      console.log('no songs found. there may be an error');
+      this.setState({ isEmpty: true });
+    }
+  
+    this.setState({
+      isFetching: false,
+      songs: [...songs, ...newSongs],
+      offset: offset + PAGE,
+    });
+  }
+
+  async refreshToken() {
+    this.setState({
+      isTokenFetching: true,
+    });
+
+    const newToken = await token();
+
+    this.setState({
+      token: newToken,
+      isTokenFetching: false,
+    });
+  }
+
+  async componentDidMount() {
+    await this.refreshToken();
+    await this.loadNextPage();
+  }
+
+  handleSearchChange(text) {
+    // reset state
+    this.setState({
+      isEmpty: false,
+      query: text,
+      offset: 0,
+      songs: [],
+    }, () => {
+      this.loadNextPage();
+    });
+
+    console.log('search text is', text);
+  }
+
+  async handleEndReached() {
+    await this.loadNextPage();    
+  }
+
+  render() {
+    const { songs, query, isFetching } = this.state;
+
+    return (
+      <View style={styles.container}>
+        <Search
+          onChange={text => this.handleSearchChange(text)}
+          text={query}
+        />
+        {
+          (isFetching && songs.length === 0)
+            ? <ActivityIndicator />
+            : <Listing
+              items={songs}
+              onEndReached={() => this.handleEndReached()}
+            />
+        }
+      </View>
     );
+  }
 }
 
 const styles = StyleSheet.create({
-    searchbar: {
-        flexDirection: 'row',
-        marginTop: 10,
-        color: '#757575',
-        borderWidth: 1,
-        borderColor: '#9E9E9E',
-        paddingBottom: 5,
-        marginHorizontal: 10
-    },
-    txtinput: {
-        color: "white",
-        fontSize: 20,
-        marginLeft: 20
-    },
-    icnbox: {
-        alignItems:"center",
-        justifyContent:"space-evenly",
-        marginLeft:10
-    },
-    button: {
-        backgroundColor:"green",
-        height: 40,
-        width: 90,
-        marginTop: 20,
-        borderRadius: 20
-    }
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
+  },
+});
 
-})
+
 export default SearchScreen;

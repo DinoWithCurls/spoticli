@@ -16,6 +16,8 @@
     "@react-navigation/material-bottom-tabs": "^5.3.6",
     "@react-navigation/native": "^5.8.6",
     "@react-navigation/stack": "^5.12.3",
+    "base-64": "^1.0.0",
+    "lodash.filter": "^4.6.0",
     "react": "16.13.1",
     "react-native": "0.63.3",
     "react-native-gesture-handler": "^1.8.0",
